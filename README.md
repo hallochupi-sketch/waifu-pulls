@@ -1,8 +1,6 @@
-# 🌸 The Waifu Card Bible
+# 🌸 Waifu Pulls
 
-**The definitive guide to waifu cards across 6 TCGs.**
-
-Live price sparklines, daily reveals, collection tracking, price alerts, and XP levels. Your daily grail-hunting companion.
+**Your daily waifu card fix.** Live prices, grail alerts, collection tracking, and the best pulls across 6 TCGs.
 
 ## Features
 
@@ -10,22 +8,20 @@ Live price sparklines, daily reveals, collection tracking, price alerts, and XP 
 - 📈 **Live price sparklines** with 30-day trend data
 - 🔮 **Daily card reveal** with countdown timer
 - 💎 **Collection tracker** with total portfolio value
-- 🔔 **Price alerts** — set target prices, get notified on visit
+- 🔔 **Price alerts** — set target prices, get notified
 - ⭐ **XP & collector levels** — Browser → Collector → Connoisseur → Grail Hunter → Whale
 - 🔥 **Visit streaks** with milestone celebrations
 - 🎲 **Surprise Me** — discover random cards
 - 📡 **Activity feed** — what's moving today
+- 🌍 **Geo-smart links** — eBay US, eBay DE, TCGPlayer, Cardmarket, Mercari JP
 - 👁️ **Personal watchlist**
 - 🔗 **Share system** with deep linking
-- 💬 **Community comments**
 
 ## Tech
 
-Pure static HTML + CSS + JS. No server needed. Hosted on GitHub Pages.
+Pure static HTML + CSS + JS. Hosted on GitHub Pages. Zero server dependencies.
 
-All user data (watchlist, collection, alerts, XP) stored in localStorage.
-
-Price data loaded from `prices.json`.
+All user data stored in localStorage. Price data from `prices.json`. Analytics via CountAPI.
 
 ## License
 

@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🌸 The Waifu Card Bible — Vault Intelligence</title>
-  <meta name="description" content="The Waifu Card Bible: 47 curated cards across 6 TCGs with live price sparklines, daily reveals, collection tracking, price alerts, and XP levels. Your daily grail-hunting companion.">
-  <meta property="og:title" content="🌸 The Waifu Card Bible — Vault Intelligence">
-  <meta property="og:description" content="50+ curated waifu cards across 6 TCGs. Live sparklines, price alerts, collection tracking, and grail-hunter intelligence.">
+  <title>🌸 Waifu Pulls — Vault Intelligence</title>
+  <meta name="description" content="Waifu Pulls: 47 curated cards across 6 TCGs with live price sparklines, daily reveals, collection tracking, price alerts, and XP levels. Your daily grail-hunting companion.">
+  <meta property="og:title" content="🌸 Waifu Pulls — Vault Intelligence">
+  <meta property="og:description" content="Your daily waifu card fix. Live prices, grail alerts, collection tracking, and the best pulls across 6 TCGs.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://hallochupi-sketch.github.io/waifu-card-bible/og-image.png">
-  <meta property="og:url" content="https://hallochupi-sketch.github.io/waifu-card-bible/">
+  <meta property="og:image" content="https://hallochupi-sketch.github.io/waifu-pulls/og-image.png">
+  <meta property="og:url" content="https://hallochupi-sketch.github.io/waifu-pulls/">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="🌸 The Waifu Card Bible — Vault Intelligence">
-  <meta name="twitter:description" content="50+ curated waifu cards across 6 TCGs. Real prices, sparklines, alerts, and collector wisdom.">
+  <meta name="twitter:title" content="🌸 Waifu Pulls — Vault Intelligence">
+  <meta name="twitter:description" content="Your daily waifu card fix. Live prices, grail alerts, and the best pulls across 6 TCGs.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
-  <link rel="canonical" href="https://hallochupi-sketch.github.io/waifu-card-bible/">
+  <link rel="canonical" href="https://hallochupi-sketch.github.io/waifu-pulls/">
   <!-- Analytics: add Plausible/GoatCounter/GA tag here after deploy -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2380,7 +2380,7 @@
 <section class="hero">
   <div class="hero-badge">Curated by Collectors · For Collectors</div>
   <h1>
-    <span class="line1">Waifu Card Bible</span>
+    <span class="line1">Waifu Pulls</span>
     <span class="line2">The Art of TCG Collecting</span>
   </h1>
   <p class="hero-sub">Real prices. Real collector wisdom. The most beautiful cards across every major TCG — curated for serious collectors.</p>
@@ -3096,7 +3096,7 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  <p>🌸 <strong>Vault Intelligence</strong> — The Waifu Card Bible. Curated by collectors, for collectors.</p>
+  <p>🌸 <strong>Vault Intelligence</strong> — Waifu Pulls. Curated by collectors, for collectors.</p>
   <p style="margin-top:12px;display:flex;flex-wrap:wrap;justify-content:center;gap:6px">
     <a href="/">🔮 Dashboard</a> · <a href="/deals.html">🔥 Deals</a> · <a href="/trade.html">⚡ Trade</a> · <a href="/collections.html">💎 Collections</a> · <a href="/blog">📝 Blog</a> · <a href="https://t.me/+o1vylSzdmZljMzMy" target="_blank">📢 Telegram</a>
   </p>
@@ -3314,7 +3314,7 @@ document.querySelectorAll('.wcard, .grail-card').forEach((card, i) => {
     const url = window.location.origin + '/waifu.html#card-' + cardId;
     card.id = 'card-' + cardId;
     if (navigator.share) {
-      navigator.share({ title: '🌸 ' + name + ' — Waifu Card Bible', url: url, text: 'Check out ' + name + ' on the Waifu Card Bible!' });
+      navigator.share({ title: '🌸 ' + name + ' — Waifu Pulls', url: url, text: 'Check out ' + name + ' on the Waifu Pulls!' });
     } else {
       navigator.clipboard.writeText(url).then(() => {
         showToast('🔗 Link copied! Share with your collector friends');
@@ -5507,7 +5507,7 @@ if (window.location.hash && window.location.hash.startsWith('#card-')) {
     const items = [];
 
     // Hardcoded launch items
-    items.push({ emoji: '🌸', text: '<strong>Welcome to the Waifu Card Bible</strong> — the definitive collector guide across all TCGs', time: 'Pinned', slug: null });
+    items.push({ emoji: '🌸', text: '<strong>Welcome to the Waifu Pulls</strong> — the definitive collector guide across all TCGs', time: 'Pinned', slug: null });
     items.push({ emoji: '⬡', text: '<strong>Riftbound cards added</strong> — 5 new chase cards including Kai\'Sa, Ahri & Jinx signatures', time: 'Today', slug: 'kaisa-riftbound-signature' });
     items.push({ emoji: '🎲', text: 'Pro tip: Try the <strong>Surprise Me</strong> button in the header for a random card discovery!', time: 'Today', slug: null });
 
@@ -5652,6 +5652,76 @@ if (window.location.hash && window.location.hash.startsWith('#card-')) {
 </script>
 
 <!-- GoatCounter: free, privacy-friendly analytics. Sign up at goatcounter.com and replace YOUR-CODE -->
-<!-- <script data-goatcounter="https://YOUR-CODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script> -->
+<!-- <script data-goatcounter="https://YOUR-CODE.goatcounter.com/count" async src="//gc.zgo.at/count.js">
+/* ═══ WAIFU PULLS ANALYTICS ═══ */
+(function() {
+  const NS = 'waifu-pulls';
+  const hit = (key) => fetch('https://api.countapi.xyz/hit/' + NS + '/' + key).catch(() => {});
+  
+  // Page view
+  hit('pageviews');
+  
+  // Unique daily visitor (approximate)
+  const today = new Date().toISOString().slice(0, 10);
+  const lastVisit = localStorage.getItem('wp_last_visit');
+  if (lastVisit !== today) {
+    hit('unique-' + today);
+    localStorage.setItem('wp_last_visit', today);
+  }
+  
+  // Device type
+  hit(window.innerWidth <= 768 ? 'mobile' : 'desktop');
+  
+  // Country (from browser language)
+  const lang = (navigator.language || 'en').slice(0, 2).toLowerCase();
+  hit('lang-' + lang);
+  
+  // Track marketplace link clicks
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a');
+    if (!link) return;
+    const href = link.href || '';
+    if (href.includes('ebay.com')) hit('click-ebay-us');
+    else if (href.includes('ebay.de')) hit('click-ebay-de');
+    else if (href.includes('tcgplayer.com')) hit('click-tcgplayer');
+    else if (href.includes('cardmarket.com')) hit('click-cardmarket');
+    else if (href.includes('mercari')) hit('click-mercari-jp');
+  });
+  
+  // Track feature usage
+  document.addEventListener('click', function(e) {
+    const el = e.target;
+    const cls = el.className || '';
+    const id = el.id || '';
+    const text = el.textContent || '';
+    
+    // Surprise Me
+    if (cls.includes('surprise') || text.includes('Surprise')) hit('feature-surprise');
+    // Watchlist
+    if (cls.includes('watch') || cls.includes('eye-btn')) hit('feature-watchlist');
+    // Collection
+    if (cls.includes('collect-btn')) hit('feature-collection');
+    // Alert bell
+    if (cls.includes('alert-btn')) hit('feature-alerts');
+    // Daily reveal
+    if (cls.includes('mystery') || cls.includes('reveal')) hit('feature-daily-reveal');
+    // Card clicks (any card item)
+    if (el.closest('.wcard') || el.closest('.grail-card')) hit('card-click');
+  });
+  
+  // Track scroll depth
+  let maxScroll = 0;
+  window.addEventListener('scroll', function() {
+    const pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+    if (pct > maxScroll) maxScroll = pct;
+  });
+  window.addEventListener('beforeunload', function() {
+    if (maxScroll >= 75) hit('scroll-75');
+    else if (maxScroll >= 50) hit('scroll-50');
+    else if (maxScroll >= 25) hit('scroll-25');
+  });
+})();
+
+</script> -->
 </body>
 </html>
