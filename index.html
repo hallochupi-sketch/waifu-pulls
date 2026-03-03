@@ -2692,7 +2692,6 @@ window.setBeginnerMode = function(enabled) {
   setBeginnerModeCore(enabled);
 };
 
-const _eventThrottle = {};
 function trackEvent(event) {
   try {
     const now = Date.now();
@@ -2700,12 +2699,6 @@ function trackEvent(event) {
     data[event] = (data[event] || 0) + 1;
     data.lastEventAt = now;
     localStorage.setItem(ANALYTICS_KEY, JSON.stringify(data));
-
-    // Avoid network spam on accidental loops / rapid clicks
-    if (!_eventThrottle[event] || (now - _eventThrottle[event]) > 5000) {
-      _eventThrottle[event] = now;
-      fetch(`https://api.countapi.xyz/hit/waifu-pulls/${event}`, { mode: 'no-cors' }).catch(() => {});
-    }
   } catch (_) {}
 }
 
@@ -2845,11 +2838,6 @@ function validateWaifuCards() {
     else invalidCards.push({ name, score, type });
   });
 
-  if (invalidCards.length) {
-    console.groupCollapsed(`[waifu-validator] Excluding ${invalidCards.length} cards`);
-    invalidCards.forEach(c => console.warn(`[waifu-validator] excluded: ${c.name} (score=${c.score}, type=${c.type})`));
-    console.groupEnd();
-  }
   return validNames;
 }
 
@@ -3322,6 +3310,9 @@ function applyFilters() {
 window.toggleTierList = function(el) {
   tierListVisible = !tierListVisible;
   const tl = document.getElementById('tier-list-view');
+  if (tierListVisible) {
+    buildCleanTierList();
+  }
   tl.style.display = tierListVisible ? 'block' : 'none';
   if (tierListVisible) {
     tl.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -3787,6 +3778,7 @@ document.addEventListener('DOMContentLoaded', function() {
   restoreCollectionState();
   applyFilters();
   buildRegistry();
+  buildCleanTierList();
   
   // Animate stats when hero is visible
   const hero = document.querySelector('.grand-hall');
