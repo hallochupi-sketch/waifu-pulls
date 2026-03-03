@@ -2665,33 +2665,34 @@ function todayKey() {
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
 
-function openOnboarding() {
+function showOnboardingOverlay() {
   document.getElementById('onboard-overlay')?.classList.add('show');
 }
 
-function closeOnboarding() {
+function hideOnboardingOverlay() {
   document.getElementById('onboard-overlay')?.classList.remove('show');
 }
 
-function setBeginnerMode(enabled) {
+function setBeginnerModeCore(enabled) {
   const on = !!enabled;
   document.body.classList.toggle('beginner-mode', on);
   document.getElementById('beginner-strip')?.classList.toggle('show', on);
   localStorage.setItem(BEGINNER_MODE_KEY, on ? '1' : '0');
   localStorage.setItem(ONBOARD_SEEN_KEY, '1');
-  closeOnboarding();
+  hideOnboardingOverlay();
   showToast(on ? 'Beginner Mode enabled ✨' : 'Pro mode enabled ⚡');
 }
 window.openOnboarding = function() {
   trackEvent('onboarding_open');
-  openOnboarding();
+  showOnboardingOverlay();
 };
-window.closeOnboarding = closeOnboarding;
+window.closeOnboarding = hideOnboardingOverlay;
 window.setBeginnerMode = function(enabled) {
   trackEvent(enabled ? 'beginner_on' : 'beginner_off');
-  setBeginnerMode(enabled);
+  setBeginnerModeCore(enabled);
 };
 
+const _eventThrottle = {};
 function trackEvent(event) {
   try {
     const now = Date.now();
@@ -2699,8 +2700,13 @@ function trackEvent(event) {
     data[event] = (data[event] || 0) + 1;
     data.lastEventAt = now;
     localStorage.setItem(ANALYTICS_KEY, JSON.stringify(data));
+
+    // Avoid network spam on accidental loops / rapid clicks
+    if (!_eventThrottle[event] || (now - _eventThrottle[event]) > 5000) {
+      _eventThrottle[event] = now;
+      fetch(`https://api.countapi.xyz/hit/waifu-pulls/${event}`, { mode: 'no-cors' }).catch(() => {});
+    }
   } catch (_) {}
-  fetch(`https://api.countapi.xyz/hit/waifu-pulls/${event}`, { mode: 'no-cors' }).catch(() => {});
 }
 
 function getCardPriceValue(card) {
